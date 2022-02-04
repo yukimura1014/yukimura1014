@@ -33,7 +33,7 @@ let site_url = [
     searchText(this.site_url);
   }
   
-  //テキストボックスのイベントハンドラー**************************************************
+  //テキストボックスのイベントハンドラ**************************************************
   function keyEnter(e){//テキストボックスのキー押下対応
     if (e.keyCode == 13) {//Enterキー押下時
       searchText(this.site_url);
@@ -41,6 +41,12 @@ let site_url = [
           return false;
   }
   
+  //Settingブタンのイベントハンドラ
+  function settingClick() {//Settingボタン押下時
+  //Todo ファイル読み込み処理を入れる
+  }
+
+
   //メイン処理************************************************************************
   
   //Searchボタンにイベントを登録
@@ -51,6 +57,10 @@ let site_url = [
   let searchbox = document.getElementById('searchText');
   searchbox.addEventListener('keypress', {site_url: site_url, handleEvent: keyEnter});
   
+  //Settingボタンにイベントを登録
+  let settingButton = document.getElementById('settingButton');
+  searchButton.addEventListener('click', {site_url: site_url, handleEvent: settingClick});
+
   //Debug用
   let msg = document.getElementById('msg');
   //msg.innerText = "Debug";
