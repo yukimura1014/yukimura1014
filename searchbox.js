@@ -1,5 +1,5 @@
 //各サイトのURL
-let site_url = [
+var site_url = [
     ['Google','https://www.google.co.jp/search?q=','0'],
     ['Youtube','https://www.youtube.com/results?search_query=','0'],
     ['Qiita','https://qiita.com/search?q=','0'],
@@ -11,7 +11,7 @@ let site_url = [
   //検索処理*************************************************************************
   function searchText(site_url){//検索処理
     //テキストボックスの文言取得
-    let searchText = document.getElementById('searchText');  
+      let searchText = document.getElementById('searchText');  
       
     //コンボボックスの値を取得
     let siteName = document.getElementById('searchSite');
@@ -41,14 +41,33 @@ let site_url = [
           return false;
   }
   
-<<<<<<< HEAD
-  function OnSettingClick(){
-    alert("リンクがクリックされました");
-=======
-  //Settingブタンのイベントハンドラ
-  function settingClick() {//Settingボタン押下時
-  //Todo ファイル読み込み処理を入れる
->>>>>>> 4f7ae7fc237c7b1d29bc4c7aac33bbfbfa572c43
+  function OnSettingClick(site_url){
+    let site_url2 = [
+      ['Qiita2','https://qiita.com/search?q=','0'],
+      ['Twitter2','https://twitter.com/search?q=','0'],
+      ['Google2','https://www.google.co.jp/search?q=','0'],
+      ['Youtube2','https://www.youtube.com/results?search_query=','0'],
+      ['Note2','https://note.com/search?q=','0']
+    ]
+  
+    site_url = site_url2;
+
+    //option要素を新しく作る
+    while (searchSite.lastChild){
+      searchSite.removeChild(searchSite.lastChild)
+    }
+
+    for (let i=0; i < site_url.length; i++){
+      var optionSite = document.createElement('option');
+      //option要素にvalueと表示名を設定
+      optionSite.value = site_url[i][0];
+      optionSite.textContent = site_url[i][0];
+      
+      //select要素にoption要素を追加する
+      searchSite.appendChild(optionSite);
+    }
+    
+    alert("リンクがクリックされました");  
   }
 
 
@@ -61,18 +80,10 @@ let site_url = [
   //テキストボックスにイベントを登録
   let searchbox = document.getElementById('searchText');
   searchbox.addEventListener('keypress', {site_url: site_url, handleEvent: keyEnter});
-<<<<<<< HEAD
 
   //設定リンクにイベントを登録
   let settinglink = document.getElementById('settingLink');
   settinglink.addEventListener('click', {site_url:site_url, handleEvent: OnSettingClick})
-=======
-  
-  //Settingボタンにイベントを登録
-  let settingButton = document.getElementById('settingButton');
-  searchButton.addEventListener('click', {site_url: site_url, handleEvent: settingClick});
-
->>>>>>> 4f7ae7fc237c7b1d29bc4c7aac33bbfbfa572c43
   //Debug用
   let msg = document.getElementById('msg');
   //msg.innerText = "Debug";
