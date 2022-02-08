@@ -1,5 +1,7 @@
 //各サイトのURL
-var site_url = [
+let site_url=[]
+
+let site_url_1 = [
     ['Google','https://www.google.co.jp/search?q=','0'],
     ['Youtube','https://www.youtube.com/results?search_query=','0'],
     ['Qiita','https://qiita.com/search?q=','0'],
@@ -71,8 +73,8 @@ var site_url = [
   }
 
 
+
   //メイン処理************************************************************************
-  
   //Searchボタンにイベントを登録
   let searchButton = document.getElementById('searchButton');
   searchButton.addEventListener('click', {site_url: site_url, handleEvent: searchClick});
@@ -84,6 +86,7 @@ var site_url = [
   //設定リンクにイベントを登録
   let settinglink = document.getElementById('settingLink');
   settinglink.addEventListener('click', {site_url:site_url, handleEvent: OnSettingClick})
+  
   //Debug用
   let msg = document.getElementById('msg');
   //msg.innerText = "Debug";
@@ -91,16 +94,19 @@ var site_url = [
   //セレクトボックスの値を設定
   let searchSite = document.getElementById('searchSite');
   
+  site_url = site_url_1;
   
   for (let i=0; i < site_url.length; i++){
     //option要素を新しく作る
     let optionSite = document.createElement('option');
   
     //option要素にvalueと表示名を設定
-    optionSite.value = site_url[i][0];
-    optionSite.textContent = site_url[i][0];
+    optionSite.value = site_url[i][1];//設定値
+    optionSite.textContent = site_url[i][0];//表示名
     
     //select要素にoption要素を追加する
     searchSite.appendChild(optionSite);
   }
+
+  
   
