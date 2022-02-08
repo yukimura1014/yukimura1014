@@ -1,4 +1,14 @@
-.title{
-    font-size:20px;
-    color:blue;
-  }  
+header{
+  font-size:40px;
+  color:blue;
+  background-color: cadetblue;
+}
+
+nav{
+  font-size: 20px;
+  color: white;
+  background-color: green;
+  padding: auto;
+  margin-left: 1em;
+  text-align: right;
+}
