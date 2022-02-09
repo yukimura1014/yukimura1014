@@ -39,7 +39,7 @@ function keyEnter(e){//テキストボックスのキー押下対応
 }
 //********************************************************************************
   
-function OnSettingClick(site_url){
+function settingClick(site_url){
   let site_url2 = [
     ['Qiita2','https://qiita.com/search?q=','0'],
     ['Twitter2','https://twitter.com/search?q=','0'],
@@ -71,37 +71,26 @@ function OnSettingClick(site_url){
   }
 }
 
-  /*function OnSettingClick(site_url){
-    let site_url2 = [
-      ['Qiita2','https://qiita.com/search?q=','0'],
-      ['Twitter2','https://twitter.com/search?q=','0'],
-      ['Google2','https://www.google.co.jp/search?q=','0'],
-      ['Youtube2','https://www.youtube.com/results?search_query=','0'],
-      ['Note2','https://note.com/search?q=','0']
-    ]
-  
-    site_url = site_url2;
+function selectboxChange(site_url){
+  //セレクトボックスの値を設定
+  let searchSite = document.getElementById('searchSite');
 
-    //セレクトボックスの値を設定
-    let searchSite = document.getElementById('searchSite');
-
-
-    //option要素を新しく作る
-    while (searchSite.lastChild){
-      searchSite.removeChild(searchSite.lastChild)
-    }
-
-    for (let i=0; i < site_url.length; i++){
-      var optionSite = document.createElement('option');
-      //option要素にvalueと表示名を設定
-      optionSite.textContent = site_url[i][0];//表示
-      optionSite.value = site_url[i][1];//Value(URL)
-      
-      //select要素にoption要素を追加する
-      searchSite.appendChild(optionSite);
-    }
+  //option要素を新しく作る
+  while (searchSite.lastChild){
+    searchSite.removeChild(searchSite.lastChild)
   }
-*/
+
+  for (let i=0; i < site_url.length; i++){
+    var optionSite = document.createElement('option');
+    //option要素にvalueと表示名を設定
+    optionSite.textContent = site_url[i][0];//表示
+    optionSite.value = site_url[i][1];//Value(URL)
+      
+    //select要素にoption要素を追加する
+    searchSite.appendChild(optionSite);
+  }
+}
+
 //メイン処理************************************************************************
 //Searchボタンにイベントを登録
 let searchButton = document.getElementById('searchButton');
@@ -113,7 +102,7 @@ searchbox.addEventListener('keypress', {site_url: site_url, handleEvent: keyEnte
 
 //設定リンクにイベントを登録
 let settinglink = document.getElementById('settingLink');
-settinglink.addEventListener('click', {site_url:site_url, handleEvent: OnSettingClick})
+settinglink.addEventListener('click', {site_url:site_url, handleEvent: settingClick})
     
 //セレクトボックスの値を設定
 let searchSite = document.getElementById('searchSite');
