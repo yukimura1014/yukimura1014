@@ -30,7 +30,7 @@ function keyEnter(e){//テキストボックスのキー押下対応
 //********************************************************************************
   
 function settingClick(site_url){
-  let site_url2 = [
+  let site_url_2 = [
     ['Qiita2','https://qiita.com/search?q=','0'],
     ['Twitter2','https://twitter.com/search?q=','0'],
     ['Google2','https://www.google.co.jp/search?q=','0'],
@@ -38,27 +38,7 @@ function settingClick(site_url){
     ['Note2','https://note.com/search?q=','0']
   ]
   
-  site_url = site_url2;
-
-  //セレクトボックスの値を設定
-  let searchSite = document.getElementById('searchSite');
-
-
-  //option要素を新しく作る
-  while (searchSite.lastChild){
-    searchSite.removeChild(searchSite.lastChild)
-  }
-
-  for (let i=0; i < site_url.length; i++){
-    var optionSite = document.createElement('option');
-    
-    //option要素にvalueと表示名を設定
-    optionSite.textContent = site_url[i][0];//表示
-    optionSite.value = site_url[i][1];//Value(URL)
-      
-    //select要素にoption要素を追加する
-    searchSite.appendChild(optionSite);
-  }
+  selectboxChange(site_url_2);
 }
 
 function selectboxChange(site_url){
@@ -104,19 +84,7 @@ let settinglink = document.getElementById('settingLink');
 settinglink.addEventListener('click', {site_url:site_url_1, handleEvent: settingClick})
     
 //セレクトボックスの値を設定
-let searchSite = document.getElementById('searchSite');
-  
-for (let i=0; i < site_url_1.length; i++){
-  //option要素を新しく作る
-  let optionSite = document.createElement('option');
-  
-  //option要素にvalueと表示名を設定
-  optionSite.value = site_url_1[i][1];//設定値
-  optionSite.textContent = site_url_1[i][0];//表示名
-    
-  //select要素にoption要素を追加する
-  searchSite.appendChild(optionSite);
-}
+selectboxChange(site_url_1);
 
   
   
