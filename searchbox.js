@@ -6,8 +6,13 @@ function searchText(site_url){//検索処理
       
   //コンボボックスの値を取得
   let siteName = document.getElementById('searchSite');
-    
-  var url = siteName.options[siteName.selectedIndex].value + searchText.value;
+  
+  if (siteName.options[siteName.selectedIndex].title == '0'){
+    var url = siteName.options[siteName.selectedIndex].value + searchText.value;
+  }
+  else{
+    var url = siteName.options[siteName.selectedIndex].value + '"' + searchText.value + '"';
+  }
    
   window.open(url);
 }
@@ -54,6 +59,7 @@ function selectboxChange(site_url){
     //option要素にvalueと表示名を設定
     optionSite.textContent = site_url[i][0];//表示
     optionSite.value = site_url[i][1];//Value(URL)
+    optionSite.title = site_url[i][2];//使ってない値をFlagに使用
       
     //select要素にoption要素を追加する
     searchSite.appendChild(optionSite);
