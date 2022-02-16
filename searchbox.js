@@ -54,7 +54,8 @@ function settingClick(site_url){
 		if( xhr.readyState === 4 && xhr.status === 200) {
       //ファイルの値を配列に格納
       var data_list = xhr.responseText.split('\r\n');
-      var output = data_list.split(',')
+      var output = data_list.responseText.split
+      var output = data_list;
       alert(output);
 		}
   }
