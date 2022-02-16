@@ -43,25 +43,22 @@ function settingClick(site_url){
   ]
   
   //設定ファイルをオープン
-  // (1) XMLHttpRequestオブジェクトを作成
 	const xhr = new XMLHttpRequest();
-
-	// (2) 取得するファイルの設定
+	//取得するファイルの設定
 	xhr.open('get', './test.txt');
-  
-	// (3) リクエスト（要求）を送信
-	xhr.send();
+  xhr.send();
 
   xhr.onreadystatechange = function() {
 
-		// (4) 通信が正常に完了したか確認
+		//通信が正常に完了したか確認
 		if( xhr.readyState === 4 && xhr.status === 200) {
-      alert('File Open');
+      //ファイルの値を配列に格納
+      var data_list = xhr.responseText.split('\r\n');
+      var output = data_list.split(',')
+      alert(output);
 		}
   }
-
-  //ファイルの値を配列に格納
-  
+ 
   //セレクトボックスに設定
   selectboxChange(site_url_2);
 
