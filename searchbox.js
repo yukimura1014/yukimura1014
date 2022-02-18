@@ -34,14 +34,16 @@ function keyEnter(e){//テキストボックスのキー押下対応
 //********************************************************************************
   
 function settingClick(site_url){
-  let site_url_2 = [
+  /*let site_url_2 = [
     ['Qiita2','https://qiita.com/search?q=','0'],
     ['Twitter2','https://twitter.com/search?q=','0'],
     ['Google2','https://www.google.co.jp/search?q=','0'],
     ['Youtube2','https://www.youtube.com/results?search_query=','0'],
     ['Note2','https://note.com/search?q=','0']
   ]
-  
+  */
+
+  let site_url_2;
   //設定ファイルをオープン
 	const xhr = new XMLHttpRequest();
 	//取得するファイルの設定
@@ -55,7 +57,20 @@ function settingClick(site_url){
       //ファイルの値を配列に格納
       var data_list = xhr.responseText.split(/,|\r\n|\n/);
       var output = data_list;
-      alert(output);
+
+      let i = 0;
+      let j = 0;
+      let k = 0;
+      do {
+        site_url_2[k][j] = output[i];
+        if (j < 2) {
+          j++;
+        }else {
+          k++;
+          j = 0;
+        }
+        i++
+      }while(i < output.length);
 		}
   }
  
