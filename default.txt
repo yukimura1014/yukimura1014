@@ -1,2 +1,5 @@
-Qiita2,https://qiita.com/search?q=,0
-Twitter2,https://twitter.com/search?q=,0
+Google,https://www.google.co.jp/search?q=,0
+Qiita,https://qiita.com/search?q=,0
+Youtube,https://www.youtube.com/results?search_query=,0
+Twitter,https://twitter.com/search?q=,0
+Note,https://note.com/search?q=,0

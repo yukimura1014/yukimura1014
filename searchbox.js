@@ -1,5 +1,5 @@
 //検索処理*************************************************************************
-function searchText(site_url){//検索処理
+function searchText(){//検索処理
     
   //テキストボックスの文言取得
   let searchText = document.getElementById('searchText');  
@@ -20,34 +20,27 @@ function searchText(site_url){//検索処理
 
 //検索ボタン処理********************************************************************
 function searchClick(){//Searchボタン押下処理
-  searchText(this.site_url);
+  searchText();
 }
 //********************************************************************************
 
 //テキストボックスのイベントハンドラ**************************************************
 function keyEnter(e){//テキストボックスのキー押下対応
   if (e.keyCode == 13) {//Enterキー押下時
-    searchText(this.site_url);
+    searchText();
   }  
   return false;
 }
 //********************************************************************************
   
 function settingClick(site_url){
-  /*let site_url_2 = [
-    ['Qiita2','https://qiita.com/search?q=','0'],
-    ['Twitter2','https://twitter.com/search?q=','0'],
-    ['Google2','https://www.google.co.jp/search?q=','0'],
-    ['Youtube2','https://www.youtube.com/results?search_query=','0'],
-    ['Note2','https://note.com/search?q=','0']
-  ]
-  */
+}
 
-  let site_url_2;
+function selectboxChange(file_path){
   //設定ファイルをオープン
 	const xhr = new XMLHttpRequest();
 	//取得するファイルの設定
-	xhr.open('get', './default.txt');
+	xhr.open('get', file_path);
   xhr.send();
 
   xhr.onreadystatechange = function() {
@@ -56,74 +49,44 @@ function settingClick(site_url){
 		if( xhr.readyState === 4 && xhr.status === 200) {
       //ファイルの値を配列に格納
       var data_list = xhr.responseText.split(/,|\r\n|\n/);
-      var output = data_list;
+
+        //セレクトボックスの値を設定
+      let searchSite = document.getElementById('searchSite');
+
+      //option要素を初期化
+      while (searchSite.lastChild){
+        searchSite.removeChild(searchSite.lastChild)
+      }
 
       let i = 0;
-      let j = 0;
-      let k = 0;
       do {
-        site_url_2[k][j] = output[i];
-        if (j < 2) {
-          j++;
-        }else {
-          k++;
-          j = 0;
-        }
-        i++
-      }while(i < output.length);
-		}
-  }
- 
-  //セレクトボックスに設定
-  selectboxChange(site_url_2);
-
-}
-
-function selectboxChange(site_url){
-  //セレクトボックスの値を設定
-  let searchSite = document.getElementById('searchSite');
-
-  //option要素を新しく作る
-  while (searchSite.lastChild){
-    searchSite.removeChild(searchSite.lastChild)
-  }
-
-  for (let i=0; i < site_url.length; i++){
-    var optionSite = document.createElement('option');
-    //option要素にvalueと表示名を設定
-    optionSite.textContent = site_url[i][0];//表示
-    optionSite.value = site_url[i][1];//Value(URL)
-    optionSite.title = site_url[i][2];//使ってない値をFlagに使用
+        var optionSite = document.createElement('option');
+        //option要素にvalueと表示名を設定
+        optionSite.textContent = data_list[i];//表示
+        optionSite.value = data_list[i+1];//Value(URL)
+        optionSite.title = data_list[i+2];//使ってない値をFlagに使用
       
-    //select要素にoption要素を追加する
-    searchSite.appendChild(optionSite);
+        //select要素にoption要素を追加する
+        searchSite.appendChild(optionSite);
+        i = i +3;
+      }while(i < data_list.length);
+    }
   }
 }
 
 //メイン処理************************************************************************
-//各サイトのURL
-let site_url_1 = [
-  ['Google','https://www.google.co.jp/search?q=','0'],
-  ['Youtube','https://www.youtube.com/results?search_query=','0'],
-  ['Qiita','https://qiita.com/search?q=','0'],
-  ['Twitter','https://twitter.com/search?q=','0'],
-  ['Note','https://note.com/search?q=','0']
-]
-
 //Searchボタンにイベントを登録
 let searchButton = document.getElementById('searchButton');
-searchButton.addEventListener('click', {site_url: site_url_1, handleEvent: searchClick});
-  
+searchButton.addEventListener('click', searchClick);  
+
 //テキストボックスにイベントを登録
 let searchbox = document.getElementById('searchText');
-searchbox.addEventListener('keypress', {site_url: site_url_1, handleEvent: keyEnter});
+searchbox.addEventListener('keypress', keyEnter);
 
 //設定リンクにイベントを登録
 let settinglink = document.getElementById('settingLink');
-settinglink.addEventListener('click', {site_url:site_url_1, handleEvent: settingClick})
-    
-//セレクトボックスの値を設定
-selectboxChange(site_url_1);
+settinglink.addEventListener('click', settingClick)    
 
-  
-  
+//セレクトボックスの値を設定
+let file = './default.txt';
+selectboxChange(file);
