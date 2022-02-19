@@ -1,0 +1,2 @@
+Qiita2,https://qiita.com/search?q=,0
+Twitter2,https://twitter.com/search?q=,0

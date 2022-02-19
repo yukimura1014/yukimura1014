@@ -47,7 +47,7 @@ function settingClick(site_url){
   //設定ファイルをオープン
 	const xhr = new XMLHttpRequest();
 	//取得するファイルの設定
-	xhr.open('get', './test.txt');
+	xhr.open('get', './default.txt');
   xhr.send();
 
   xhr.onreadystatechange = function() {
