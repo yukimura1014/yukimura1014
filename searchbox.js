@@ -34,6 +34,7 @@ function keyEnter(e){//テキストボックスのキー押下対応
 //********************************************************************************
   
 function settingClick(site_url){
+  window.location.href = './default.txt'
 }
 
 function selectboxChange(file_path){
