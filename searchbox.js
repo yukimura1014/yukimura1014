@@ -31,11 +31,9 @@ function keyEnter(e){//テキストボックスのキー押下対応
   }  
   return false;
 }
-//********************************************************************************
-  
-function settingClick(site_url){
-}
+//*************************************************************************************
 
+//SelectBoxの値を設定******************************************************************
 function selectboxChange(file_path){
   //設定ファイルをオープン
 	const xhr = new XMLHttpRequest();
@@ -73,6 +71,7 @@ function selectboxChange(file_path){
     }
   }
 }
+//*************************************************************************************
 
 //メイン処理************************************************************************
 //Searchボタンにイベントを登録
@@ -82,10 +81,6 @@ searchButton.addEventListener('click', searchClick);
 //テキストボックスにイベントを登録
 let searchbox = document.getElementById('searchText');
 searchbox.addEventListener('keypress', keyEnter);
-
-//設定リンクにイベントを登録
-let settinglink = document.getElementById('settingLink');
-settinglink.addEventListener('click', settingClick)    
 
 //セレクトボックスの値を設定
 let file = './default.txt';
