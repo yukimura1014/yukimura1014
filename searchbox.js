@@ -74,6 +74,8 @@ function selectboxChange(file_path){
 //*************************************************************************************
 
 //メイン処理************************************************************************
+const Setting_File = './default.txt'
+
 //Searchボタンにイベントを登録
 let searchButton = document.getElementById('searchButton');
 searchButton.addEventListener('click', searchClick);  
@@ -83,5 +85,5 @@ let searchbox = document.getElementById('searchText');
 searchbox.addEventListener('keypress', keyEnter);
 
 //セレクトボックスの値を設定
-let file = './default.txt';
+let file = Setting_File;
 selectboxChange(file);
