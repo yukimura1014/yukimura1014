@@ -74,16 +74,18 @@ function selectboxChange(file_path){
 //*************************************************************************************
 
 //メイン処理************************************************************************
-const Setting_File = './default.txt'
+window.onload = function() {
+  const Setting_File = './default.txt'
 
-//Searchボタンにイベントを登録
-let searchButton = document.getElementById('searchButton');
-searchButton.addEventListener('click', searchClick);  
+  //Searchボタンにイベントを登録
+  let searchButton = document.getElementById('searchButton');
+  searchButton.addEventListener('click', searchClick);  
 
-//テキストボックスにイベントを登録
-let searchbox = document.getElementById('searchText');
-searchbox.addEventListener('keypress', keyEnter);
+  //テキストボックスにイベントを登録
+  let searchbox = document.getElementById('searchText');
+  searchbox.addEventListener('keypress', keyEnter);
 
-//セレクトボックスの値を設定
-let file = Setting_File;
-selectboxChange(file);
+  //セレクトボックスの値を設定
+  let file = Setting_File;
+  selectboxChange(file);
+}
