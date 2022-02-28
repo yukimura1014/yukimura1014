@@ -44,5 +44,6 @@ window.onload = function() {
     let saveButton = document.getElementById('saveButton');
     saveButton.addEventListener('click', saveClick);  
   
+    //設定ファイルをテーブルへ反映
     setTable(Setting_File,"table");
 }
