@@ -33,6 +33,16 @@ function setTable(file_path,tableId){
     }
 }
 
+function saveClick(){
+    //テーブルデータの配列読み込み
+    //ファイルに保存
+}
+
+
 window.onload = function() {
+    //Searchボタンにイベントを登録
+    let saveButton = document.getElementById('saveButton');
+    saveButton.addEventListener('click', saveClick);  
+  
     setTable(Setting_File,"table");
 }
