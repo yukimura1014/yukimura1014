@@ -28,6 +28,7 @@ function setTable(file_path,tableId){
             }
             // 指定したdiv要素に表を加える
             document.getElementById(tableId).appendChild(table);
+            document.getElementById(tableId).contentEditable = true;
         }
     }
 }
