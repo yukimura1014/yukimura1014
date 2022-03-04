@@ -35,6 +35,20 @@ function setTable(file_path,tableId){
 
 function saveClick(){
     //テーブルデータの配列読み込み
+    var arr = [];
+    var obj = {};
+ 
+    //テーブルの値をObject配列に格納する
+    $("tr").each(function(i){
+      obj = new Object();
+      $(this).children().each(function(j){
+        obj[j] = $(this).text();
+      });
+      arr.push(obj);
+    });
+ 
+    //コンソールに出力してみる
+    alert(arr);
     //ファイルに保存
 }
 
