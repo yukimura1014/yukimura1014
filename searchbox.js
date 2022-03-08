@@ -75,7 +75,7 @@ function selectboxChange(file_path){
 
 //メイン処理************************************************************************
 window.onload = function() {
-  const Setting_File = './default.txt'
+  const Setting_File = 'default.txt'
 
   //Searchボタンにイベントを登録
   let searchButton = document.getElementById('searchButton');

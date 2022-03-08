@@ -1,4 +1,4 @@
-const Setting_File = './default.txt'
+const Setting_File = 'default.txt'
 
 function setTable(file_path,tableId){
     //設定ファイルをオープン
@@ -39,18 +39,44 @@ function saveClick(){
     var data = [];
     
     var tr = $("table tr");//全行を取得
-    for( var i=0,l=tr.length;i<l;i++ ){
+    for(var i = 0,l = tr.length;i < l;i++){
         var cells = tr.eq(i).children();//1行目から順にth、td問わず列を取得
-        for( var j=0,m=cells.length;j<m;j++ ){
+        for(var j = 0,m = cells.length;j < m;j++){
             if( typeof data[i] == "undefined" ){
                 data[i] = [];
             }
             data[i][j] = cells.eq(j).text();//i行目j列の文字列を取得
         }
     } 
+    
+    //テキストファイルに変換
+    let str ="";
+    for (i = 0;i < data.length;i++){
+        for (j = 0; j < data[i].length;j++){
+            if (j == data[i].length - 1){
+                if (i != data.length - 1){
+                    str += data[i][j]+"\n";
+                }
+                else {
+                    str += data[i][j];
+                }
+            }
+            else{
+                str += data[i][j]+",";
+            }
+        }
+    }
+
     //コンソールに出力してみる
-    alert(data);
-    //ファイルに保存
+    alert(str);
+
+    //ファイルに出力
+    var blob =new Blob([str],{type:"text/csv"}); //配列に上記の文字列(str)を設定
+    var link =document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download ="default.txt";
+    link.click();
+    
 }
 
 
