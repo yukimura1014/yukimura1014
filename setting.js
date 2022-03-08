@@ -67,9 +67,6 @@ function saveClick(){
         }
     }
 
-    //コンソールに出力してみる
-    alert(str);
-
     //ファイルに出力
     var blob =new Blob([str],{type:"text/csv"}); //配列に上記の文字列(str)を設定
     var link =document.createElement('a');
