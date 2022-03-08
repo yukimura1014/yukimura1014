@@ -34,21 +34,22 @@ function setTable(file_path,tableId){
 }
 
 function saveClick(){
+    
     //テーブルデータの配列読み込み
-    var arr = [];
-    var obj = {};
- 
-    //テーブルの値をObject配列に格納する
-    $("tr").each(function(i){
-      obj = new Object();
-      $(this).children().each(function(j){
-        obj[j] = $(this).text();
-      });
-      arr.push(obj);
-    });
- 
+    var data = [];
+    
+    var tr = $("table tr");//全行を取得
+    for( var i=0,l=tr.length;i<l;i++ ){
+        var cells = tr.eq(i).children();//1行目から順にth、td問わず列を取得
+        for( var j=0,m=cells.length;j<m;j++ ){
+            if( typeof data[i] == "undefined" ){
+                data[i] = [];
+            }
+            data[i][j] = cells.eq(j).text();//i行目j列の文字列を取得
+        }
+    } 
     //コンソールに出力してみる
-    alert(arr);
+    alert(data);
     //ファイルに保存
 }
 
