@@ -78,7 +78,7 @@ function saveClick(){
 
 
 window.onload = function() {
-    //Searchボタンにイベントを登録
+    //Saveボタンにイベントを登録
     let saveButton = document.getElementById('saveButton');
     saveButton.addEventListener('click', saveClick);  
   
