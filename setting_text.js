@@ -13,7 +13,8 @@ function setValue(file_path,viewId){
             //ファイルの値をテキストボックスに表示
             var text_data = xhr.responseText;
             //指定の場所に表示
-            document.getElementById(viewId).innerHTML = text_data;
+            //document.getElementById(viewId).innerHTML = text_data;
+            document.forms.id_form1.id_textBox1.value = text_data;
         }
     }
 }
