@@ -68,6 +68,9 @@ function selectboxChange(file_path){
         searchSite.appendChild(optionSite);
         i = i +3;
       }while(i < data_list.length);
+      //ALLの選択肢を追加
+      optionSite.textContent = "ALL";
+      searchSite.appendChild(optionSite);
     }
   }
 }
