@@ -28,11 +28,12 @@ function setTable(file_path,tableId){
             }
             // 指定したdiv要素に表を加える
             document.getElementById(tableId).appendChild(table);
-            document.getElementById(tableId).contentEditable = true;
+            //document.getElementById(tableId).contentEditable = true;
         }
     }
 }
 
+/*
 function saveClick(){
     
     //テーブルデータの配列読み込み
@@ -75,13 +76,9 @@ function saveClick(){
     link.click();
     
 }
+*/
 
-
-window.onload = function() {
-    //Saveボタンにイベントを登録
-    let saveButton = document.getElementById('saveButton');
-    saveButton.addEventListener('click', saveClick);  
-  
+window.onload = function() {  
     //設定ファイルをテーブルへ反映
     setTable(Setting_File,"table");
 }

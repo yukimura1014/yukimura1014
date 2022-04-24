@@ -22,7 +22,7 @@ function setValue(file_path,viewId){
 function saveClick(){
     
     //テキストデータの読み込み
-
+    str = document.forms.id_form1.id_textBox1.value;
     //ファイルに出力
     var blob =new Blob([str],{type:"text/csv"}); //配列に上記の文字列(str)を設定
     var link =document.createElement('a');
