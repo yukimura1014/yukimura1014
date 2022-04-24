@@ -7,14 +7,30 @@ function searchText(){//検索処理
   //コンボボックスの値を取得
   let siteName = document.getElementById('searchSite');
   
-  if (siteName.options[siteName.selectedIndex].title == '0'){
-    var url = siteName.options[siteName.selectedIndex].value + searchText.value;
+  //単独検索
+  if (siteName.options[siteName.selectedIndex].textContent != 'ALL'){
+    if (siteName.options[siteName.selectedIndex].title == '0'){
+      var url = siteName.options[siteName.selectedIndex].value + searchText.value;
+    }
+    else{
+      var url = siteName.options[siteName.selectedIndex].value + '"' + searchText.value + '"';
+    }
+    window.open(url);
   }
-  else{
-    var url = siteName.options[siteName.selectedIndex].value + '"' + searchText.value + '"';
+  else {//ALL検索
+    var i = 0;
+    do {
+      var searchindex = i;
+      if (siteName.options[searchindex].title == '0'){
+        var url = siteName.options[searchindex].value + searchText.value;
+      }
+      else{
+        var url = siteName.options[searchindex].value + '"' + searchText.value + '"';
+      }
+      window.open(url,"_blank").blur();
+      i = i + 1;
+    } while(i < siteName.selectedIndex);
   }
-   
-  window.open(url);
 }
 //********************************************************************************
 
@@ -69,6 +85,7 @@ function selectboxChange(file_path){
         i = i +3;
       }while(i < data_list.length);
       //ALLの選択肢を追加
+      var optionSite = document.createElement('option');
       optionSite.textContent = "ALL";
       searchSite.appendChild(optionSite);
     }
